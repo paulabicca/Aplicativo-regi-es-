@@ -6,7 +6,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-
 public class MainActivity extends AppCompatActivity {
 
     private LinearLayout layoutContainer;
@@ -28,37 +27,61 @@ public class MainActivity extends AppCompatActivity {
         ivTop = (ImageView) findViewById(R.id.ivTop);
         ivBottom = (ImageView) findViewById(R.id.ivBottom);
         contador = 0;
+        contadorEstados = 0;
 
         regiao = new String[] {
-                "Sul",
-                "Norte",
-                "Sudeste",
-                "Nordeste",
-                "Centro-Oeste"
+            "Sul",
+            "Norte",
+            "Sudeste",
+            "Nordeste",
+            "Centro-Oeste"
         };
 
-        tvRegiao.setText(regiao[contador]);
+        estado = new String[][] {
+            {"Parana","Rio Grande do Sul", "Santa Catarina"},
+            {"Amazonas","Roraima", "Amapá","Pará","Tocantins"," Rondônia", "Acre"},
+            {"São Paulo", "Rio de Janeiro","Espírito Santo", "Minas Gerais"},
+            {"Maranhão","Piauí", "Ceará","Rio Grande do Norte","Pernambuco"," Paraíba", "Sergipe","Alagoas", "Bahia"},
+            {"Mato Grosso", "Mato Grosso do Sul", "Goiás"}
+        };
+
+        //inicialização
+        tvRegiao.setText( regiao[contador]);
+        tvEstados.setText(estado[contador][contadorEstados]);
 
         layoutContainer.setOnTouchListener( new OnSwipeTouchListener(this){
 
             @Override
             public void onSwipeRight() {
                 super.onSwipeRight();
+                contadorEstados ++;
+                if (contadorEstados >= estado[contador].length){
+                    contadorEstados = 0;
+                }
+                tvEstados.setText(estado[contador][contadorEstados]);
             }
 
             @Override
             public void onSwipeLeft() {
                 super.onSwipeLeft();
+                contadorEstados --;
+                if(contadorEstados < 0 ){
+                    contadorEstados = estado[contador].length-1;
+                }
+                tvEstados.setText(estado[contador][contadorEstados]);
             }
 
             @Override
             public void onSwipeTop() {
                 super.onSwipeTop();
+
                 contador ++;
                 if (contador >= regiao.length){
                     contador = 0;
                 }
                 tvRegiao.setText(regiao[contador]);
+                contadorEstados = 0;
+                tvEstados.setText(estado[contador][contadorEstados]);
             }
 
             @Override
@@ -69,9 +92,9 @@ public class MainActivity extends AppCompatActivity {
                     contador = regiao.length-1;
                 }
                 tvRegiao.setText( regiao[contador]);
+                contadorEstados = 0;
+                tvEstados.setText(estado[contador][contadorEstados]);
             }
         });
-
-
     }
 }
