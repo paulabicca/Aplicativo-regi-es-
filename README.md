@@ -1,1 +1,1 @@
-Um aplicativo Android com uma tela onde o usuário pode fazer o movimento de Swipe para cima e para baixo trocando as 5 regiões do do Brasil ( Centro-Oeste, Nordeste, Norte, Sudeste e Sul), e com movimento os lados trocando os estados da região que estiver selecionada.
+Um aplicativo Android com uma tela onde o usuário pode fazer o movimento de Swipe para cima e para baixo trocando as 5 regiões do do Brasil ( Centro-Oeste, Nordeste, Norte, Sudeste e Sul), e com movimento os lados trocando os estados da região que estiver selecionada. (Faculdade)
